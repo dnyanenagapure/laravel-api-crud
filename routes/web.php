@@ -20,6 +20,7 @@ use App\Http\Controllers\RegistrationController;
 Route::get('/', [Website::class,'index'])->name('index');
 Route::post('/getState', [Website::class,'getState']);
 Route::post('/getCity', [Website::class,'getCity']);
+Route::post('/getTaluka', [Website::class,'getTaluka']);
 Route::get('/registration', [RegistrationController::class, 'showRegistrationForm'])->name('registration.form');
 // Route::post('/getState', [RegistrationController::class, 'getStates']);
 // Route::post('/getCity', [RegistrationController::class, 'getCities']);

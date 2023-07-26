@@ -20,7 +20,7 @@
 			<div class="form-group">
 
       <input type="text" name="name" class="form-control" value="{{ $user->name;}}"><br/>
-<input type="text" class="form-control" name="city" value="{{ $user->city;}}"><br/>
+<input type="text" class="form-control" name="taluka" value="{{ $user->taluka;}}"><br/>
 <input type="text" class="form-control" name="pincode" value="{{ $user->pincode;}}">
 <br/>
 

@@ -28,7 +28,7 @@ class RegistrationController extends Controller
         $user = User::findOrFail($id);
 
         $user->name=$request->input('name');
-        $user->city=$request->input('city');
+        $user->taluka=$request->input('taluka');
         $user->pincode=$request->input('pincode');
         $user->save();
         return redirect('/users')->with('alert','Update successful!');
@@ -51,9 +51,9 @@ class RegistrationController extends Controller
         $firstName = $request->input('first_name');
         $lastName = $request->input('last_name');
         $name=$firstName.' '.$lastName;
-        $countryId = $request->input('country');
         $stateId = $request->input('state');
-        $city = $request->input('city');
+        $cityId = $request->input('city');
+        $taluka = $request->input('taluka');
         $pinCode = $request->input('pin_code');
 
        // echo "test";
@@ -63,9 +63,9 @@ class RegistrationController extends Controller
         // For example, you can create a new User model and save the data
         $user = new User;
         $user->name = $name;
-        $user->country = $countryId;
-        $user->state = $stateId;
-        $user->city = $city;
+        $user->stateId = $stateId;
+        $user->cityId = $cityId;
+        $user->taluka = $taluka;
         $user->pincode = $pinCode;
         $user->save();
 

@@ -27,20 +27,19 @@
       <input type="text" class="form-control" name="first_name" placeholder="First name"><br/>
       <input type="text" class="form-control" name="last_name" placeholder="Last name"><br/>
 
-<select id="country" name="country" class="form-control" >
-	<option value="">Select State</option>
-	@foreach($country as $list)
-		<option value="{{$list->id}}">{{$list->country}}</option>
-	@endforeach
-</select>
-
-<br/>
 <select id="state" name="state" class="form-control" >
-	<option value="">Select District</option>
+<option value="">Select State</option>
+	@foreach($state as $list)
+		<option value="{{$list->id}}">{{$list->state}}</option>
+	@endforeach
 </select>
 <br/>
 
 <select id="city" name="city" class="form-control" >
+	<option value="">Select District</option>
+</select><br/>
+
+<select id="taluka" name="taluka" class="form-control" >
 	<option value="">Select Taluka</option>
 </select><br/>
 
@@ -59,20 +58,8 @@
 
 		<script>
 		jQuery(document).ready(function(){
-			jQuery('#country').change(function(){
-				let cid=jQuery(this).val();
-				jQuery('#city').html('<option value="">Select City</option>')
-				jQuery.ajax({
-					url:'/getState',
-					type:'post',
-					data:'cid='+cid+'&_token={{csrf_token()}}',
-					success:function(result){
-						jQuery('#state').html(result)
-					}
-				});
-			});
 			
-			jQuery('#state').change(function(){
+		jQuery('#state').change(function(){
 				let sid=jQuery(this).val();
 				jQuery.ajax({
 					url:'/getCity',
@@ -80,6 +67,18 @@
 					data:'sid='+sid+'&_token={{csrf_token()}}',
 					success:function(result){
 						jQuery('#city').html(result)
+					}
+				});
+			});
+
+			jQuery('#city').change(function(){
+				let cid=jQuery(this).val();
+				jQuery.ajax({
+					url:'/getTaluka',
+					type:'post',
+					data:'cid='+cid+'&_token={{csrf_token()}}',
+					success:function(result){
+						jQuery('#taluka').html(result)
 					}
 				});
 			});

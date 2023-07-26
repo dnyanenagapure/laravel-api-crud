@@ -21,9 +21,9 @@
   <thead>
     <tr>
       <th scope="col">Name</th>
-      <th scope="col">Country ID</th>
       <th scope="col">State ID</th>
-      <th scope="col">City</th>
+      <th scope="col">City ID</th>
+      <th scope="col">Taluka</th>
       <th scope="col">Pincode</th>
       <th scope="col">Action</th>
     </tr>
@@ -32,9 +32,9 @@
         @foreach ($users as $data)
     <tr>
       <td>{{ $data['name'] }}</td>
-      <td>{{ $data['country'] }}</td>
-      <td>{{ $data['state'] }}</td>
-      <td>{{ $data['city'] }}</td>
+      <td>{{ $data['stateId'] }}</td>
+      <td>{{ $data['cityId'] }}</td>
+      <td>{{ $data['taluka'] }}</td>
       <td>{{ $data['pincode'] }}</td>
       <td><a href="/update/{{ $data['id'] }}">Update</a> &nbsp; <a href="/delete/{{ $data['id'] }}">Delete</a></td>
     </tr>
