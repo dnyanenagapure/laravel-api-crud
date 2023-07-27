@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\View;
 class RegistrationController extends Controller
 {
     public function users(){
-        $users=User::all();
-       
-       return View('dataDisp', compact('users'));
-     
+       $users= User::select("name","stateId", "cityId", "taluka","pincode")->get();
+    
+        // $users=User::all();
+        return View('dataDisp', compact('users'));
     }
     
     public function updatedata(Request $request,$id){
