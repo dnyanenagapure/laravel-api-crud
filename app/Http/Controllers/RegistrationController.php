@@ -37,17 +37,14 @@ class RegistrationController extends Controller
     public function deletedata(Request $request,$id){
         $user = User::findOrFail($id);
 
-         // Perform the deletion
          $user->delete();
  
-         // Redirect back or return a response as needed
          return redirect()->back()->with('alert','User Deleted Successfully!');
 
     }
 
     public function submitForm(Request $request)
     {
-        // Retrieve form data
         $firstName = $request->input('first_name');
         $lastName = $request->input('last_name');
         $name=$firstName.' '.$lastName;
@@ -59,8 +56,6 @@ class RegistrationController extends Controller
        // echo "test";
         //die;
 
-        // Implement saving data to the database here
-        // For example, you can create a new User model and save the data
         $user = new User;
         $user->name = $name;
         $user->stateId = $stateId;
@@ -69,10 +64,6 @@ class RegistrationController extends Controller
         $user->pincode = $pinCode;
         $user->save();
 
-        // After saving the data, you can redirect to a success page or perform any other actions as needed.
-        // For example:
-        //return redirect()->route('index')->with('message', 'Registration successful!');
-      // return Redirect::back()->with(['msg' => 'Registration successful!']);
       return redirect()->back()->with('alert','Registration successful!');
     }
 }
