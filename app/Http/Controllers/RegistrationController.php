@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\View;
 class RegistrationController extends Controller
 {
     public function users(){
-       $users= User::select("name","stateId", "cityId", "taluka","pincode")->get();
-    
-        // $users=User::all();
+       $users= User::with('state', 'city')->get();
+       
+    // $users=User::all();
         return View('dataDisp', compact('users'));
     }
     
